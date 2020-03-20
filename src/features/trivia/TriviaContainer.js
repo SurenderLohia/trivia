@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
+import { PropTypes } from 'prop-types';
+
 import {
   getData, 
   setSelectedAnswer,
@@ -76,6 +78,20 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateTriviaView({triviaView: triviaViews.result}));
   }
 })
+
+TriviaContainer.propTypes = {
+  triviaList: PropTypes.array,
+  currentTriviaIndex: PropTypes.number,
+  triviaView: PropTypes.string,
+  selectedOptions: PropTypes.object,
+  totalScore: PropTypes.number,
+
+  getData: PropTypes.func,
+  setSelectedAnswer: PropTypes.func,
+  gotoNextQuestion: PropTypes.func,
+  gotoPreviousQuestion:PropTypes.func,
+  setTotalScore: PropTypes.func
+}
 
 export default connect(
   mapStateToProps,

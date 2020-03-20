@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^4.13.1"
+    "node-sass": "^4.13.1",
+    "prop-types": "^15.7.2"
   }
 }
