@@ -6,7 +6,10 @@ function triviaReducer(state = triviaInitialState, action) {
   switch (action.type) {
     case TRIVIA_DATA_LOADED:
       return Object.assign({}, state, {
-        triviaList: state.triviaList.concat(action.payload.results)
+        trivia: {
+          ...state.trivia,
+          triviaList: state.trivia.triviaList.concat(action.payload.results)
+        }
       });
   
     default:

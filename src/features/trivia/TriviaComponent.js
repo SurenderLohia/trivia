@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Trivia() {
+function TriviaComponent(props) {
   return (
     <div className="flex-item">
       <h3 className="is-size-6 has-text-centered">Round 1/20</h3>
@@ -37,4 +37,4 @@ function Trivia() {
   )
 }
 
-export default Trivia;
+export default TriviaComponent;
