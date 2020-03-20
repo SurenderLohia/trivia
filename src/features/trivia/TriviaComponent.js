@@ -1,6 +1,8 @@
 import React from 'react';
 import { triviaViews } from './triviaConstants';
 
+import Timer from 'react-compound-timer'
+
 function TriviaComponent({ props }) {
   const {
     triviaView,
@@ -39,7 +41,13 @@ function Quiz({ props }) {
   return (
     <div className="flex-item">
       <h3 className="is-size-6 has-text-centered">Round {currentTriviaIndex + 1}/ {triviaList.length}</h3>
-      <h1 className="is-size-1 has-text-centered mb1">0:07</h1>
+      <h1 className="is-size-1 has-text-centered mb1">
+        <Timer>
+          <Timer.Minutes />:
+	        <Timer.Seconds />
+        </Timer>
+      </h1>
+      
       <div className="trivia-main-section mb2">
         <h2 className="is-size-3 question wrapword has-text-centered mb2">{currentTrivia.question}</h2>
         <div className="columns is-multiline is-variable is-7">
