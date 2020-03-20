@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import { getData, setSelectedAnswer } from './triviaActions';
+import {
+  getData, 
+  setSelectedAnswer,
+  increamentCurrentTrivaIndex,
+  decrementCurrentTriviaIndex
+} from './triviaActions';
 
 import TriviaComponent from './TriviaComponent';
 import { getTriviaListWithOptions } from './triviaSelector';
@@ -40,23 +45,14 @@ const mapStateToProps = state => {
   }
 }
 
-
-
 const mapDispatchToProps = dispatch => ({
   getData: () => dispatch(getData()),
   setSelectedAnswer: option => {
-    console.log('options', option)
     dispatch(setSelectedAnswer(option));
-  }
+  },
+  gotoNextQuestion: () => dispatch(increamentCurrentTrivaIndex()),
+  gotoPreviousQuestion: () => dispatch(decrementCurrentTriviaIndex())
 })
-
-// const mapDispatchToProps = dispatch => ({
-//   sendMessage: messaga => {
-//   dispatch(sendMessage(message));
-//   dispatch(navigateTo({ routeName: 'messagesList' }));
-//   },
-//  });
-
 
 export default connect(
   mapStateToProps,

@@ -13,7 +13,7 @@ function TriviaComponent({ props }) {
   } = triviaViews;
 
   return (
-    <div>
+    <div class="flex-item">
       {triviaView === loader && <Loader />}
       {triviaView === quiz && <Quiz props={props} />}
       {triviaView === result && <QuizResult />}
@@ -27,7 +27,9 @@ function Quiz({ props }) {
     triviaList,
     currentTriviaIndex,
     setSelectedAnswer,
-    selectedOptions
+    selectedOptions,
+    gotoNextQuestion,
+    gotoPreviousQuestion
   } = props;
 
   const currentTrivia = triviaList.length && triviaList[currentTriviaIndex]
@@ -50,7 +52,15 @@ function Quiz({ props }) {
           })}
         </div>
       </div>
+      
       <div>
+        <div className="columns">
+          <div className="column has-text-right">
+            <button className="button is-secondory" onClick={gotoPreviousQuestion}>Previous</button>
+            <button className="button is-primary ml1" onClick={gotoNextQuestion}>Next</button>
+            <button className="button is-primary ml1">Submit</button>
+          </div>
+        </div>
         <h6 className="is-size-5 has-text-centered">Select correct answer. One entry per round</h6>
       </div>
     </div>
@@ -59,7 +69,7 @@ function Quiz({ props }) {
 
 function Loader() {
   return (
-    <div>Loading...</div>
+    <div className="has-text-centered">Loading...</div>
   )
 }
 
