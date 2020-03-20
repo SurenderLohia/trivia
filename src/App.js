@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import './App.scss';
+import 'bulma';
+
+import TriviaComponent from './features/trivia/TriviaComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-gradient">
+      <div className="container expand-height">
+        <div className="section expand-height">
+          <div className="columns is-centered expand-height">
+            <div className="column is-8 flex-row is-center">
+              <TriviaComponent />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

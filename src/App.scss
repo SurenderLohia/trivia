@@ -1,0 +1,50 @@
+$bg-gradient-1: #27273E;
+$bg-gradient-2: #86337A;
+
+$border-radius-size: 3px;
+
+html,
+body,
+#root,
+.App,
+.expand-height {
+  height: 100%;
+}
+
+.bg-gradient {
+  background-color: $bg-gradient-2;
+  background-image: linear-gradient($bg-gradient-1, $bg-gradient-2);
+  color: #fff;
+}
+
+.column.flex-row,
+.flex-row {
+  display: flex;
+  &.is-center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.flex-item {
+  flex: 1;
+}
+
+.question,
+.answer-item {
+  background-color: #fff;
+  border-radius: $border-radius-size;
+  color: #333;
+
+  font-weight: bold;
+  padding: 10px;
+}
+
+
+.mb1 {
+  margin-bottom: 1rem;
+}
+
+.mb2 {
+  margin-bottom: 2rem;
+}
