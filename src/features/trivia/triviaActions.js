@@ -1,4 +1,8 @@
-import { TRIVIA_DATA_REQUESTED, UPDATE_TRIVIA_VIEW } from './triviaActionTypes';
+import { 
+  TRIVIA_DATA_REQUESTED, 
+  UPDATE_TRIVIA_VIEW,
+  SET_SELECTED_ANSWER
+} from './triviaActionTypes';
 
 
 function getData() {
@@ -9,4 +13,8 @@ function updateTriviaView(payload) {
   return {type: UPDATE_TRIVIA_VIEW, payload }
 }
 
-export { getData, updateTriviaView }
+function setSelectedAnswer(payload = {}) {
+  return {type: SET_SELECTED_ANSWER, payload}
+}
+
+export { getData, updateTriviaView, setSelectedAnswer }

@@ -31,13 +31,36 @@ body,
 }
 
 .question,
-.answer-item {
+.answer-item,
+.result {
   background-color: #fff;
-  border-radius: $border-radius-size;
+  border-radius: 3px;
   color: #333;
 
   font-weight: bold;
+  
+}
+
+.question {
   padding: 10px;
+  word-wrap: break-word;
+}
+
+.result {
+  padding: 20px;
+}
+
+.answer-item {
+  padding: 15px 10px;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+}
+
+.answer-item:hover,
+.answer-item.active {
+  background-color: #86337A;
+  color: #fff;
 }
 
 
@@ -48,3 +71,20 @@ body,
 .mb2 {
   margin-bottom: 2rem;
 }
+
+.ml1 {
+  margin-left: 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+.wrapword {
+  white-space: pre-wrap;                
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
+
+

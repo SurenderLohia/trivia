@@ -1,6 +1,10 @@
 import triviaInitialState from './triviaInitialState';
 
-import { TRIVIA_DATA_LOADED, UPDATE_TRIVIA_VIEW } from './triviaActionTypes';
+import { 
+  TRIVIA_DATA_LOADED, 
+  UPDATE_TRIVIA_VIEW,
+  SET_SELECTED_ANSWER
+} from './triviaActionTypes';
 
 function triviaReducer(state = triviaInitialState, action) {
   switch (action.type) {
@@ -13,11 +17,20 @@ function triviaReducer(state = triviaInitialState, action) {
       });
 
     case UPDATE_TRIVIA_VIEW:
-      console.log('comes here');
       return Object.assign({}, state, {
         trivia: {
           ...state.trivia,
           triviaView: action.payload.triviaView
+        }
+      });
+
+    case SET_SELECTED_ANSWER:
+      return Object.assign({}, state, {
+        trivia: {
+          ...state.trivia,
+          selectedOptions: Object.assign({}, state.trivia.selectedOption, {
+            [action.payload.key]: [action.payload.value]
+          })
         }
       });
 
