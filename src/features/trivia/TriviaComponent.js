@@ -1,9 +1,11 @@
 import React from 'react';
 import { triviaViews } from './triviaConstants';
 
+import { PropTypes } from 'prop-types';
+
 import Timer from 'react-compound-timer'
 
-function TriviaComponent({ props }) {
+function TriviaComponent(props) {
   const {
     triviaView,
     totalScore
@@ -90,6 +92,20 @@ function QuizResult(props) {
       <h1 className="is-size-1 has-text-centered">Total score: {props.totalScore} </h1>
     </div>
   )
+}
+
+TriviaComponent.propTypes = {
+  triviaList: PropTypes.array,
+  currentTriviaIndex: PropTypes.number,
+  triviaView: PropTypes.string,
+  selectedOptions: PropTypes.object,
+  totalScore: PropTypes.number,
+
+  getData: PropTypes.func,
+  setSelectedAnswer: PropTypes.func,
+  gotoNextQuestion: PropTypes.func,
+  gotoPreviousQuestion:PropTypes.func,
+  setTotalScore: PropTypes.func
 }
 
 export default TriviaComponent;
