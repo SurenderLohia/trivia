@@ -4,10 +4,18 @@ import { connect } from 'react-redux';
 import { getData } from './triviaActions';
 
 import TriviaComponent from './TriviaComponent';
+import { getTriviaListWithOptions } from './triviaSelector';
 
 const mapStateToProps = state => {
+  const { trivia } = state;
+  const {
+    //triviaList,
+    currentTriviaIndex
+  } = trivia;
+
   return {
-    triviaList: state.triviaList
+    triviaList: getTriviaListWithOptions(state),
+    currentTriviaIndex
   }
 }
 
