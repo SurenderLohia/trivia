@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Trivia
+
+A simple Trivia app powerd by [React](https://reactjs.org/), [Redux](https://redux.js.org/), [Bulma](https://bulma.io/)
 
 ## Available Scripts
 
