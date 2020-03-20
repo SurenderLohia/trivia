@@ -1,3 +1,5 @@
+import { triviaViews } from './triviaConstants';
+
 const TriviaInitialState = {
   trivia: {
     triviaList: [],
@@ -6,7 +8,7 @@ const TriviaInitialState = {
     currentTrivia: {},
     selectedOptions: {},
     totalScore: 0,
-    currentView: 'loader', // Possible views or loader, quiz, result,
+    triviaView: triviaViews.loader,
     selectedOption: '',
     countFrom: new Date(),
     totalSeconds: 0

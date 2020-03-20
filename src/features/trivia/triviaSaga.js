@@ -1,6 +1,13 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { takeEvery, call, put, all } from 'redux-saga/effects';
 
-import { TRIVIA_DATA_REQUESTED, TRIVIA_DATA_LOADED, TRIVIA_API_ERROR } from './triviaActionTypes';
+import { 
+  TRIVIA_DATA_REQUESTED, 
+  TRIVIA_DATA_LOADED,
+  TRIVIA_API_ERROR,
+  UPDATE_TRIVIA_VIEW
+} from './triviaActionTypes';
+
+import { triviaViews } from './triviaConstants';
 
 export default function* watcherSaga() {
   yield takeEvery(TRIVIA_DATA_REQUESTED, workerSaga);
@@ -8,8 +15,17 @@ export default function* watcherSaga() {
 
 function* workerSaga() {
   try {
+    const updateViewPayload = {
+      triviaView: triviaViews.quiz
+    }
+
     const payload = yield call(getTriviaData);
-    yield put({type: TRIVIA_DATA_LOADED, payload });
+    
+    yield all([
+      put({type: TRIVIA_DATA_LOADED, payload }),
+      put({type: UPDATE_TRIVIA_VIEW, payload: updateViewPayload  })
+    ]);
+    
   } catch(error) {
     yield put({type: TRIVIA_API_ERROR, payload: error})
   }

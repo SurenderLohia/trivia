@@ -9,13 +9,14 @@ import { getTriviaListWithOptions } from './triviaSelector';
 const mapStateToProps = state => {
   const { trivia } = state;
   const {
-    //triviaList,
+    triviaView,
     currentTriviaIndex
   } = trivia;
 
   return {
     triviaList: getTriviaListWithOptions(state),
-    currentTriviaIndex
+    currentTriviaIndex,
+    triviaView
   }
 }
 
