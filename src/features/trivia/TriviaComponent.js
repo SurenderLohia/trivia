@@ -66,8 +66,8 @@ function Quiz({ props }) {
       <div>
         <div className="columns">
           <div className="column has-text-right">
-            <button className="button is-secondory" onClick={gotoPreviousQuestion}>Previous</button>
-            <button className="button is-primary ml1" onClick={gotoNextQuestion}>Next</button>
+            <button className="button is-secondory" disabled={currentTriviaIndex === 0} onClick={gotoPreviousQuestion}>Previous</button>
+            <button className="button is-primary ml1" disabled={currentTriviaIndex === (triviaList.length - 1)} onClick={gotoNextQuestion}>Next</button>
             <button className="button is-primary ml1" onClick={() => setTotalScore(selectedOptions, triviaList)}>Submit</button>
           </div>
         </div>
