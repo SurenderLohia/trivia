@@ -3,7 +3,8 @@ import {
   UPDATE_TRIVIA_VIEW,
   SET_SELECTED_ANSWER,
   INCREMET_CURRENT_TRIVIA_INDEX,
-  DECREMET_CURRENT_TRIVIA_INDEX
+  DECREMET_CURRENT_TRIVIA_INDEX,
+  SET_TOTAL_SCORE
 } from './triviaActionTypes';
 
 
@@ -27,10 +28,15 @@ function decrementCurrentTriviaIndex() {
   return {type: DECREMET_CURRENT_TRIVIA_INDEX}
 }
 
+function setTotalScore(payload) {
+  return {type: SET_TOTAL_SCORE, payload}
+}
+
 export { 
   getData,
   updateTriviaView, 
   setSelectedAnswer,
   increamentCurrentTrivaIndex,
-  decrementCurrentTriviaIndex
+  decrementCurrentTriviaIndex,
+  setTotalScore
 }

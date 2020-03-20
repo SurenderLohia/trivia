@@ -9,7 +9,6 @@ const TriviaInitialState = {
     selectedOptions: {},
     totalScore: 0,
     triviaView: triviaViews.loader,
-    selectedOption: '',
     countFrom: new Date(),
     totalSeconds: 0
   }

@@ -3,7 +3,8 @@ import { triviaViews } from './triviaConstants';
 
 function TriviaComponent({ props }) {
   const {
-    triviaView
+    triviaView,
+    totalScore
   } = props;
 
   const {
@@ -13,10 +14,10 @@ function TriviaComponent({ props }) {
   } = triviaViews;
 
   return (
-    <div class="flex-item">
+    <div className="flex-item">
       {triviaView === loader && <Loader />}
       {triviaView === quiz && <Quiz props={props} />}
-      {triviaView === result && <QuizResult />}
+      {triviaView === result && <QuizResult totalScore={totalScore} />}
     </div>
 
   )
@@ -29,7 +30,8 @@ function Quiz({ props }) {
     setSelectedAnswer,
     selectedOptions,
     gotoNextQuestion,
-    gotoPreviousQuestion
+    gotoPreviousQuestion,
+    setTotalScore
   } = props;
 
   const currentTrivia = triviaList.length && triviaList[currentTriviaIndex]
@@ -58,7 +60,7 @@ function Quiz({ props }) {
           <div className="column has-text-right">
             <button className="button is-secondory" onClick={gotoPreviousQuestion}>Previous</button>
             <button className="button is-primary ml1" onClick={gotoNextQuestion}>Next</button>
-            <button className="button is-primary ml1">Submit</button>
+            <button className="button is-primary ml1" onClick={() => setTotalScore(selectedOptions, triviaList)}>Submit</button>
           </div>
         </div>
         <h6 className="is-size-5 has-text-centered">Select correct answer. One entry per round</h6>
@@ -73,9 +75,12 @@ function Loader() {
   )
 }
 
-function QuizResult() {
+function QuizResult(props) {
   return (
-    <div>Result...</div>
+    <div className="result" v-if="currentView === 'result'">
+      <h2 className="is-size-3 has-text-centered">Congratulation! You successfully completed this trivia </h2>
+      <h1 className="is-size-1 has-text-centered">Total score: {props.totalScore} </h1>
+    </div>
   )
 }
 

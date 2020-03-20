@@ -5,7 +5,8 @@ import {
   UPDATE_TRIVIA_VIEW,
   SET_SELECTED_ANSWER,
   INCREMET_CURRENT_TRIVIA_INDEX,
-  DECREMET_CURRENT_TRIVIA_INDEX
+  DECREMET_CURRENT_TRIVIA_INDEX,
+  SET_TOTAL_SCORE
 } from './triviaActionTypes';
 
 function triviaReducer(state = triviaInitialState, action) {
@@ -30,7 +31,7 @@ function triviaReducer(state = triviaInitialState, action) {
       return Object.assign({}, state, {
         trivia: {
           ...state.trivia,
-          selectedOptions: Object.assign({}, state.trivia.selectedOption, {
+          selectedOptions: Object.assign({}, state.trivia.selectedOptions, {
             [action.payload.key]: action.payload.value
           })
         }
@@ -49,6 +50,14 @@ function triviaReducer(state = triviaInitialState, action) {
         trivia: {
           ...state.trivia,
           currentTriviaIndex: state.trivia.currentTriviaIndex - 1
+        }
+      });
+
+    case SET_TOTAL_SCORE:
+      return Object.assign({}, state, {
+        trivia: {
+          ...state.trivia,
+          totalScore: action.payload.totalScore
         }
       });
 

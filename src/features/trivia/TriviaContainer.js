@@ -5,17 +5,17 @@ import {
   getData, 
   setSelectedAnswer,
   increamentCurrentTrivaIndex,
-  decrementCurrentTriviaIndex
+  decrementCurrentTriviaIndex,
+  setTotalScore,
+  updateTriviaView
 } from './triviaActions';
 
 import TriviaComponent from './TriviaComponent';
 import { getTriviaListWithOptions } from './triviaSelector';
 
-class TriviaContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+import { triviaViews } from './triviaConstants';
 
+class TriviaContainer extends Component {
   componentDidMount() {
     this.props.getData();
   }
@@ -29,19 +29,37 @@ class TriviaContainer extends Component {
   }
 }
 
+const getTotalScore = function(selectedOptions, triviaList) {
+  let totalScore = 0;
+  const QUESTION_WEIGHT = 5;
+
+  for (const key in selectedOptions) {
+    if (Object.prototype.hasOwnProperty.call(selectedOptions, key)) {
+      const selectedOption = selectedOptions[key];
+      if(selectedOption === triviaList[key].correct_answer) {
+        totalScore += QUESTION_WEIGHT;
+      }
+    }
+  }
+
+  return totalScore;
+};
+
 const mapStateToProps = state => {
   const { trivia } = state;
   const {
     triviaView,
     currentTriviaIndex,
-    selectedOptions
+    selectedOptions,
+    totalScore
   } = trivia;
 
   return {
     triviaList: getTriviaListWithOptions(state),
     currentTriviaIndex,
     triviaView,
-    selectedOptions
+    selectedOptions,
+    totalScore
   }
 }
 
@@ -51,7 +69,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setSelectedAnswer(option));
   },
   gotoNextQuestion: () => dispatch(increamentCurrentTrivaIndex()),
-  gotoPreviousQuestion: () => dispatch(decrementCurrentTriviaIndex())
+  gotoPreviousQuestion: () => dispatch(decrementCurrentTriviaIndex()),
+  setTotalScore: (selectedOptions, triviaList) => {
+    const totalScore = getTotalScore(selectedOptions, triviaList);
+    dispatch(setTotalScore({totalScore}));
+    dispatch(updateTriviaView({triviaView: triviaViews.result}));
+  }
 })
 
 export default connect(
