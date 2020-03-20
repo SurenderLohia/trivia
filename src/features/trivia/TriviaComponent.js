@@ -26,7 +26,8 @@ function Quiz({ props }) {
   const {
     triviaList,
     currentTriviaIndex,
-    setSelectedAnswer
+    setSelectedAnswer,
+    selectedOptions
   } = props;
 
   const currentTrivia = triviaList.length && triviaList[currentTriviaIndex]
@@ -41,7 +42,7 @@ function Quiz({ props }) {
           {currentTrivia.options.map((item, index) => {
             return (
               <div key={index} className="column is-half" onClick={() => setSelectedAnswer({key: currentTriviaIndex, value: item})}>
-                <div className="answer-item">
+                <div className={'answer-item ' + (selectedOptions[currentTriviaIndex] === item ? 'active' : '') }>
                 <span>{item}</span>
                 </div>
               </div>

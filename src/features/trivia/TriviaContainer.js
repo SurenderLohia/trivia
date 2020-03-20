@@ -28,13 +28,15 @@ const mapStateToProps = state => {
   const { trivia } = state;
   const {
     triviaView,
-    currentTriviaIndex
+    currentTriviaIndex,
+    selectedOptions
   } = trivia;
 
   return {
     triviaList: getTriviaListWithOptions(state),
     currentTriviaIndex,
-    triviaView
+    triviaView,
+    selectedOptions
   }
 }
 

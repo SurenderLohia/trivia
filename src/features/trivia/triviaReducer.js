@@ -29,7 +29,7 @@ function triviaReducer(state = triviaInitialState, action) {
         trivia: {
           ...state.trivia,
           selectedOptions: Object.assign({}, state.trivia.selectedOption, {
-            [action.payload.key]: [action.payload.value]
+            [action.payload.key]: action.payload.value
           })
         }
       });
