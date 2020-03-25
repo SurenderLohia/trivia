@@ -88,7 +88,7 @@ function Loader() {
 function QuizResult(props) {
   return (
     <div className="result" v-if="currentView === 'result'">
-      <h2 className="is-size-3 has-text-centered">Congratulation! You successfully completed this trivia </h2>
+      <h2 className="is-size-3 has-text-centered">Congratulations! You successfully completed this trivia.</h2>
       <h1 className="is-size-1 has-text-centered">Total score: {props.totalScore} </h1>
     </div>
   )
